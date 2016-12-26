@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Certs can be *.RSA or *.DSA
+unzip -p "$1" META-INF/*.?SA | keytool -printcert
+

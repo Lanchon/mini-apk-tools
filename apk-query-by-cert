@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+cert_sha1=$(jar-cert-sha1 "$1" | sed 's/://g')
+
+xdg-open https://www.androidobservatory.org/cert/$cert_sha1
+

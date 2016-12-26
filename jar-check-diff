@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for f in "${@:2}"; do
+    >&2 echo "Comparing $1 and $f"
+	diff <(jar-check "$1") <(jar-check "$f")
+    >&2 echo
+done
+

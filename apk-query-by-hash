@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+#xdg-open https://www.androidobservatory.org/apk/$(sha1sum "$1" | cut -d' ' -f1)
+
+sha1=$(sha1sum "$1" | cut -d' ' -f1)
+
+xdg-open https://www.androidobservatory.org/apk/$sha1
+xdg-open https://www.virustotal.com/en-gb/file/$sha1/analysis/
+xdg-open http://andrototal.org/sample-analysis/hash/$sha1
+

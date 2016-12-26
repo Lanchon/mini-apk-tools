@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+for f in "$@"; do
+
+    echo "Checking archive:"
+    unzip -tqq "$f"
+    echo "No errors detected in archive data."
+    echo
+
+    echo "Checking signature:"
+    jar-signature-check "$f"
+    echo
+
+    echo "Certificate:"
+    jar-cert "$f"
+    echo
+    echo
+
+done
+

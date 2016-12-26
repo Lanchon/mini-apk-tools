@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+for apk in "$@"
+do
+
+    info=$(aapt dump badging "$apk" | egrep '^(package: |application-label:)')
+    regex="^package:.* name='([^']*)'.* versionCode='([^']*)'.* versionName='([^']*)'.*^application-label:'(.*)'$"
+
+    if ! [[ $info =~ $regex ]]
+    then
+        echo "error: cannot parse output of 'aapt dump badging': $apk" 1>&2
+        exit 1
+    fi
+
+    echo "${BASH_REMATCH[4]} ${BASH_REMATCH[3]} (${BASH_REMATCH[2]}) [${BASH_REMATCH[1]}]"
+
+done
+

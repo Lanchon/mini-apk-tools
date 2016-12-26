@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+for apk in "$@"
+do
+
+    new_name="$(apk-info "$apk").apk"
+
+    if [ "$apk" != "$new_name" ]
+    then
+        echo "$apk -> $new_name"
+        mv -i "$apk" "$new_name"
+    fi
+
+done
+

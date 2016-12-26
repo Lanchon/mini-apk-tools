@@ -1,0 +1,4 @@
+#!/bin/bash
+
+jar-cert "$1" | grep SHA1 | cut -d' ' -f3
+
